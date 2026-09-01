@@ -249,6 +249,5 @@ prenom.nom@entreprise.fr
 - Les scripts utilisent l'authentification Veeam existante
 - Aucun mot de passe n'est stocké dans les scripts
 - Les fichiers CSV ne contiennent que des adresses email
-- Les logs sont générés dans le dossier d'export
 
 ---
