@@ -44,8 +44,7 @@ L'interface graphique de Veeam Backup for Microsoft 365 ne permet pas d'exporter
 │                              ▼                                   │
 │  ┌─────────────────────────────────────────────────────────┐    │
 │  │  generate-user-list.ps1                                │    │
-│  │  ├── users-with-email_YYYYMMDD.csv → Pour export Veeam │    │
-│  │  └── users-without-email_YYYYMMDD.csv → Revue manuelle │    │
+│  │  └── users-to-archive.csv → Pour export Veeam          │    │
 │  └─────────────────────────────────────────────────────────┘    │
 │                              │                                   │
 │                              ▼                                   │
@@ -60,8 +59,7 @@ L'interface graphique de Veeam Backup for Microsoft 365 ne permet pas d'exporter
 │  │           Dossier d'export (ex: D:\PST_Exports)        │    │
 │  │  ├── user1_Principale.pst                             │    │
 │  │  ├── user1_Archive.pst                                │    │
-│  │  ├── user2_Principale.pst                             │    │
-│  │  └── export_log_YYYYMMDD.txt                          │    │
+│  │  └── user2_Principale.pst                             │    │
 │  └─────────────────────────────────────────────────────────┘    │
 └─────────────────────────────────────────────────────────────────┘
 ```
@@ -81,8 +79,7 @@ L'interface graphique de Veeam Backup for Microsoft 365 ne permet pas d'exporter
 
 - ✅ Récupération des utilisateurs depuis un OU Active Directory
 - ✅ Séparation des utilisateurs avec/sans email
-- ✅ Génération de fichiers CSV timestampés
-- ✅ Export des utilisateurs sans email pour revue manuelle
+- ✅ Génération du fichier CSV
 
 ## 📦 Prérequis
 
