@@ -117,21 +117,19 @@ L'interface graphique de Veeam Backup for Microsoft 365 ne permet pas d'exporter
 ### Étape 1 : Générer la liste des utilisateurs
 
 ```powershell
-.\Generate-UserList.ps1 -SearchBase "OU=Departement,OU=Utilisateurs,DC=entreprise,DC=fr" -OutputPath "C:\scripts"
+.\Generate-UserList.ps1
 ```
-
 **Paramètres :**
 - `-SearchBase` : Chemin de l'OU Active Directory à interroger (obligatoire)
 - `-OutputPath` : Dossier de sortie des CSV (défaut : `C:\scripts`)
 
 **Fichiers générés :**
-- `users-with-email_YYYYMMDD_HHMMSS.csv` → Pour l'export Veeam
-- `users-without-email_YYYYMMDD_HHMMSS.csv` → Pour revue manuelle
+- `users-to-archive.csv` → Pour l'export Veeam
 
 ### Étape 2 : Exécuter l'export des boîtes aux lettres
 
 ```powershell
-.\Export-VeeamMailboxes.ps1 -CsvPath "C:\scripts\users-with-email_20240827_143022.csv" -ExportPath "D:\PST_Exports" -OrganizationName "entreprise.onmicrosoft.com"
+.\Export-VeeamMailboxes.ps1 -CsvPath "C:\scripts\users-to-archive.csv" -ExportPath "D:\PST_Exports" -OrganizationName "entreprise.onmicrosoft.com"
 ```
 
 **Paramètres :**
@@ -144,8 +142,7 @@ L'interface graphique de Veeam Backup for Microsoft 365 ne permet pas d'exporter
 D:\PST_Exports\
 ├── user1_Principale.pst
 ├── user1_Archive.pst
-├── user2_Principale.pst
-└── export_log_20240827_143022.txt
+└── user2_Principale.pst
 ```
 
 ## 🔧 Dépannage
@@ -197,13 +194,13 @@ Get-Module -Name Veeam.* -ListAvailable
 
 ```powershell
 # 1. Générer la liste depuis l'OU "Departement"
-.\Generate-UserList.ps1 -SearchBase "OU=Departement,OU=Utilisateurs,DC=entreprise,DC=fr"
+.\Generate-UserList.ps1
 
 # 2. Vérifier le fichier généré
-Get-Content "C:\scripts\users-with-email_20240827_143022.csv"
+Get-Content "C:\scripts\users-to-archive.csv"
 
 # 3. Lancer l'export
-.\Export-VeeamMailboxes.ps1 -CsvPath "C:\scripts\users-with-email_20240827_143022.csv" -ExportPath "D:\Exports\PST" -OrganizationName "entreprise.onmicrosoft.com"
+.\Export-VeeamMailboxes.ps1 -CsvPath "C:\scripts\users-to-archive.csv" -ExportPath "D:\Exports\PST" -OrganizationName "entreprise.onmicrosoft.com"
 ```
 
 ## 🤝 Contribution
